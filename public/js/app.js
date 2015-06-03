@@ -30,3 +30,9 @@ $(document).ready(function() {
         return false;
     });
 });
+
+$('li a').click(function(){
+    var value = $(this).text();
+    $('a.dropdown-toggle').html(value);
+    $('a.dropdown-toggle').append('<span class="caret">'+'</span>');
+});
