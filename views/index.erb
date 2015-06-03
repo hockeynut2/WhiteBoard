@@ -6,22 +6,28 @@
   <link type="image/icon" rel="shortcut icon" href="/images/icon_whiteboard.png">
 </head>
 <body style="text-align: center">
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default" style="align-content: center">
   <div class="container-fluid">
-    <p class="navbar-text" style="text-align: left">White Board</p>
-    <button class="btn btn-primary navbar-btn">Colors</button>
-    <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shapes <span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Circle</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Square</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Triangle</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rectangle</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Marker</a></li>
-    </ul>
-    <button class="btn btn-primary navbar-btn">Insert image</button>
-    <button class="btn btn-primary navbar-btn" onclick="downloadImg()">Save</button>
-    <button class="btn btn-primary navbar-btn" onclick="clearCanvas()">Clear board</button>
-  </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: auto; width: 38%">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Colors</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shapes <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Marker tool</a></li>
+            <li><a href="#">Circle</a></li>
+            <li><a href="#">Square</a></li>
+            <li><a href="#">Triangle</a></li>
+            <li><a href="#">Rectangle</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Insert Image</a></li>
+        <li><a onclick="downloadImg()">Save</a></li>
+        <li><a onclick="clearCanvas()">Clear Board</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
 <canvas id="canvas" width="700px" height="500px" style="border: 1px solid black; margin: 5px"></canvas>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
