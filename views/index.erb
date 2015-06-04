@@ -3,26 +3,37 @@
   <title>White Board</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/paper/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
   <link type="image/icon" rel="shortcut icon" href="/images/icon_whiteboard.png">
 </head>
 <body style="text-align: center">
 <nav class="navbar navbar-default" style="align-content: center">
   <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: auto; width: 40%">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: auto; width: 45%">
       <ul class="nav navbar-nav">
-        <li><a href="#">Colors</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Choose a color <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li><a href="#" class="opt color-opt" style="background-color: red">Red</a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: orange">Orange</a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: yellow">Yellow</a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: green">Green</a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: blue">Blue</a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: purple">Purple</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Choose a shape <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-            <li><a href="#">Marker tool</a></li>
-            <li><a href="#">Circle</a></li>
-            <li><a href="#">Square</a></li>
-            <li><a href="#">Triangle</a></li>
-            <li><a href="#">Rectangle</a></li>
+            <li><a href="#" class="opt">Marker tool</a></li>
+            <li><a href="#" class="opt">Circle</a></li>
+            <li><a href="#" class="opt">Square</a></li>
+            <li><a href="#" class="opt">Triangle</a></li>
+            <li><a href="#" class="opt">Rectangle</a></li>
           </ul>
         </li>
-        <li><a href="#">Insert Image</a></li>
+        <li><a id="image-adder"">Insert Image</a></li>
         <li><a onclick="downloadImg()">Save</a></li>
         <li><a onclick="clearCanvas()">Clear Board</a></li>
       </ul>
