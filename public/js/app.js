@@ -20,53 +20,37 @@ function downloadImg() {
     window.location.href = img;
 }
 
+document.getElementById("imageLoader").addEventListener("change", handleImage, false);
+
+function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            brush.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+}
+
+
+//function loadImg(e) {
+//    var reader = new FileReader;
+//    reader.onload = function(event) {
+//        var img = new Image;
+//        img.onload = function() {
+//            brush.drawImage(img, 0, 0, canvas.width, canvas.height)
+//        };
+//        img.src = event.target.result
+//    };
+//}
 //
+//document.getElementById('imageLoader').addEventListener('change', loadImg, false);
+
+
 //$('li a.opt').click(function(){
 //    var value = $(this).text();
 //    $('a.dropdown-toggle').html(value);
 //    $('a.dropdown-toggle').append('<span class="caret">'+'</span>');
 //});
-
-function drawDot(brush, x,y) {
-    // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
-    r=0; g=0; b=0; a=255;
-
-    // Select a fill style
-    brush.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
-    // Draw a filled circle
-    brush.beginPath();
-    brush.arc(x, y, size, 0, Math.PI*2, true);
-    brush.closePath();
-    brush.fill();
-}
-
-var mouseX, mouseY, mouseDown = 0;
-function canvas_mouseDown() {
-    mouseDown = 1;
-    drawDot(brush, mouseX, mouseY)
-}
-
-function canvas_mouseUp() {
-    mouseDown = 0;
-}
-
-function canvas_mouseMove(e) {
-    getMousePos(e);
-    if (mouseDown == 1) {
-        drawDot(brush, mouseX, mouseY)
-    }
-}
-
-function getMousePos(e) {
-    if (e.offsetX) {
-        mouseX = e.offsetX;
-        mouseY = e.offsetY;
-    } else if (e.layerX) {
-        mouseX = e.layerX;
-        mouseY = e.layerY;
-    }
-}
-
-canvas.addEventListener('mousedown', canvas_mouseDown, false);
-canvas.addEventListener('mousemove', canvas_mouseMove, false);
-window.addEventListener('mouseup', canvas_mouseUp, false);
