@@ -33,23 +33,32 @@ function handleImage(e){
     reader.readAsDataURL(e.target.files[0]);
 }
 
+var mouse = {x: 0, y: 0};
 
-//function loadImg(e) {
-//    var reader = new FileReader;
-//    reader.onload = function(event) {
-//        var img = new Image;
-//        img.onload = function() {
-//            brush.drawImage(img, 0, 0, canvas.width, canvas.height)
-//        };
-//        img.src = event.target.result
-//    };
-//}
-//
-//document.getElementById('imageLoader').addEventListener('change', loadImg, false);
+/* Mouse Capturing Work */
+canvas.addEventListener('mousemove', function(e) {
+    mouse.x = e.pageX - this.offsetLeft;
+    mouse.y = e.pageY - this.offsetTop;
+}, false);
 
+/* Drawing on White Board App */
+brush.lineWidth = 5;
+brush.lineJoin = 'round';
+brush.lineCap = 'round';
+brush.strokeStyle = 'black';
 
-//$('li a.opt').click(function(){
-//    var value = $(this).text();
-//    $('a.dropdown-toggle').html(value);
-//    $('a.dropdown-toggle').append('<span class="caret">'+'</span>');
-//});
+canvas.addEventListener('mousedown', function(e) {
+    brush.beginPath();
+    brush.moveTo(mouse.x, mouse.y);
+
+    canvas.addEventListener('mousemove', onPaint, false);
+}, false);
+
+canvas.addEventListener('mouseup', function() {
+    canvas.removeEventListener('mousemove', onPaint, false);
+}, false);
+
+var onPaint = function() {
+    brush.lineTo(mouse.x, mouse.y);
+    brush.stroke();
+};
