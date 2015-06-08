@@ -5,9 +5,8 @@ brush.fillStyle = 'white';
 brush.fillRect(0, 0, canvas.width, canvas.height);
 
 brush.beginPath();
-brush.rect(200, 50, 400, 200);
 brush.fillStyle = 'yellow';
-brush.fill();
+brush.fillRect(200, 50, 400, 200);
 
 function clearCanvas() {
     brush.clearRect(0, 0, canvas.width, canvas.height);
