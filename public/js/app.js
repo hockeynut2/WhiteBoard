@@ -1,24 +1,24 @@
+/* Inital setup */
 var canvas = document.getElementById('canvas');
 var brush = canvas.getContext('2d');
 
 brush.fillStyle = 'white';
 brush.fillRect(0, 0, canvas.width, canvas.height);
 
-brush.beginPath();
-brush.fillStyle = 'yellow';
-brush.fillRect(200, 50, 400, 200);
-
+/* Function for Clear button */
 function clearCanvas() {
     brush.clearRect(0, 0, canvas.width, canvas.height);
     brush.fillStyle = 'white';
     brush.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+/* Function for Save button */
 function downloadImg() {
     var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     window.location.href = img;
 }
 
+/* Function and Event Listener for Insert Image button */
 document.getElementById("imageLoader").addEventListener("change", handleImage, false);
 
 function handleImage(e){
@@ -32,7 +32,7 @@ function handleImage(e){
     };
     reader.readAsDataURL(e.target.files[0]);
 }
-
+/* Marker Drawing */
 var mouse = {x: 0, y: 0};
 
 /* Mouse Capturing Work */
@@ -47,6 +47,7 @@ brush.lineJoin = 'round';
 brush.lineCap = 'round';
 brush.strokeStyle = 'black';
 
+/* Event listener work */
 canvas.addEventListener('mousedown', function(e) {
     brush.beginPath();
     brush.moveTo(mouse.x, mouse.y);
