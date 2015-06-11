@@ -13,24 +13,25 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: auto; width: 60%">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Choose a color <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Choose a shape <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-            <li><a href="#" class="opt color-opt" style="background-color: red"></a></li>
-            <li><a href="#" class="opt color-opt" style="background-color: orange"></a></li>
-            <li><a href="#" class="opt color-opt" style="background-color: yellow"></a></li>
-            <li><a href="#" class="opt color-opt" style="background-color: green"></a></li>
-            <li><a href="#" class="opt color-opt" style="background-color: blue"></a></li>
-            <li><a href="#" class="opt color-opt" style="background-color: purple"></a></li>
+            <li><a href="#" class="opt" onclick="marker()">Marker tool</a></li>
+            <li><a href="#" class="opt" onclick="colorEraser()">Eraser</a></li>
+            <li><a href="#" class="opt">Circle</a></li>
+            <li><a href="#" class="opt" onclick="rectangleDrawer()">Rectangle</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Choose a shape <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Choose a color <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-            <li><a href="#" class="opt">Marker tool</a></li>
-            <li><a href="#" class="opt">Circle</a></li>
-            <li><a href="#" class="opt">Square</a></li>
-            <li><a href="#" class="opt">Triangle</a></li>
-            <li><a href="#" class="opt">Rectangle</a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: white" id="white"></a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: red" id="red"></a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: orange" id="orange"></a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: yellow" id="yellow"></a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: green" id="green"></a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: blue" id="blue"></a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: purple" id="purple"></a></li>
+            <li><a href="#" class="opt color-opt" style="background-color: black" id="black"></a></li>
           </ul>
         </li>
         <li><a><input type="file" id="imageLoader" name="imageLoader"></a></li>
