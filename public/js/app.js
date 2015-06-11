@@ -132,6 +132,8 @@ function rectangleDrawer() {
     document.getElementById('purple').addEventListener('click', fillPurple);
     document.getElementById('black').addEventListener('click', fillBlack);
 
+    $('#canvas').unbind('mousedown');
+
     canvas.removeEventListener('mousedown', function(e) {
         brush.beginPath();
         brush.moveTo(mouse.x, mouse.y);
@@ -232,4 +234,56 @@ function fillBlack() {
 
 function fillWhite() {
     brush.fillStyle = 'white';
+}
+
+/* Simple distance function */
+function distance(x1, y1, x2, y2) {
+    var dx = x1 - x2;
+    var dy = y1 - y2;
+    return Math.sqrt((dx * dx + dy * dy))
+}
+
+
+function dynamicCircle(e) {
+    var mouseX = parseInt(e.clientX - canvas.offsetLeft);
+    var mouseY = parseInt(e.clientY - canvas.offsetTop);
+    if (isDrawing) {
+        isDrawing = false;
+        brush.beginPath();
+        brush.arc(startX, startY, distance(startX, startY, mouseX, mouseY), 0, 2* Math.PI);
+        brush.fill();
+        brush.stroke();
+        canvas.style.cursor = "default";
+    } else {
+        isDrawing = true;
+        startX = mouseX;
+        startY = mouseY;
+        canvas.style.cursor = "crosshair";
+    }
+}
+
+function drawCircle() {
+    document.getElementById('white').removeEventListener('click', colorWhite);
+    document.getElementById('red').removeEventListener('click', colorRed);
+    document.getElementById('orange').removeEventListener('click', colorOrange);
+    document.getElementById('yellow').removeEventListener('click', colorYellow);
+    document.getElementById('green').removeEventListener('click', colorGreen);
+    document.getElementById('blue').removeEventListener('click', colorBlue);
+    document.getElementById('purple').removeEventListener('click', colorPurple);
+    document.getElementById('black').removeEventListener('click', colorBlack);
+
+    document.getElementById('white').addEventListener('click', fillWhite);
+    document.getElementById('red').addEventListener('click', fillRed);
+    document.getElementById('orange').addEventListener('click', fillOrange);
+    document.getElementById('yellow').addEventListener('click', fillYellow);
+    document.getElementById('green').addEventListener('click', fillGreen);
+    document.getElementById('blue').addEventListener('click', fillBlue);
+    document.getElementById('purple').addEventListener('click', fillPurple);
+    document.getElementById('black').addEventListener('click', fillBlack);
+
+    $('#canvas').unbind('mousedown');
+
+    $('#canvas').mousedown(function (e) {
+        dynamicCircle(e);
+    });
 }
