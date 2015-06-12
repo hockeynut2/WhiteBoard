@@ -286,4 +286,5 @@ function drawCircle() {
     $('#canvas').mousedown(function (e) {
         dynamicCircle(e);
     });
+    brush.strokeStyle = 'black';
 }
