@@ -89,6 +89,10 @@ function marker() {
     canvas.addEventListener('mouseup', function() {
         canvas.removeEventListener('mousemove', onPaint, false);
     }, false);
+
+    canvas.addEventListener ("mouseout", function() {
+        canvas.removeEventListener('mousemove', onPaint, false)
+    }, false);
 }
 
 /* Rectangle work */
@@ -145,6 +149,10 @@ function rectangleDrawer() {
         canvas.removeEventListener('mousemove', onPaint, false);
     }, false);
 
+    canvas.removeEventListener ("mouseout", function() {
+        canvas.removeEventListener('mousemove', onPaint, false)
+    }, false);
+
 
     brush.strokeStyle = 'black';
     brush.lineWidth = 5;
@@ -199,6 +207,20 @@ function colorWhite() {
 function colorEraser() {
     brush.strokeStyle = 'white';
     brush.lineWidth = 50;
+    canvas.removeEventListener('mousedown', function(e) {
+        brush.beginPath();
+        brush.moveTo(mouse.x, mouse.y);
+
+        canvas.addEventListener('mousemove', onPaint, false);
+    }, false);
+
+    canvas.removeEventListener('mouseup', function() {
+        canvas.removeEventListener('mousemove', onPaint, false);
+    }, false);
+
+    $('#canvas').mousedown(function (e) {
+        dynamicCircle(e);
+    });
 }
 
 marker();
@@ -286,5 +308,9 @@ function drawCircle() {
     $('#canvas').mousedown(function (e) {
         dynamicCircle(e);
     });
+
+    canvas.removeEventListener ("mouseout", function() {
+        canvas.removeEventListener('mousemove', onPaint, false)
+    }, false);
     brush.strokeStyle = 'black';
 }
