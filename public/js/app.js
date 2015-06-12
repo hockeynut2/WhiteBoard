@@ -218,9 +218,7 @@ function colorEraser() {
         canvas.removeEventListener('mousemove', onPaint, false);
     }, false);
 
-    $('#canvas').mousedown(function (e) {
-        dynamicCircle(e);
-    });
+    $('#canvas').unbind('mousedown');
 }
 
 marker();
@@ -316,6 +314,7 @@ function drawCircle() {
     });
 
     brush.strokeWidth = 5;
+    brush.lineWidth = 5;
 
     canvas.removeEventListener ("mouseout", function() {
         canvas.removeEventListener('mousemove', onPaint, false)
