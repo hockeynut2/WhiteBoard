@@ -275,11 +275,17 @@ function dynamicCircle(e) {
         brush.arc(startX, startY, distance(startX, startY, mouseX, mouseY), 0, 2* Math.PI);
         brush.fill();
         brush.stroke();
+        brush.closePath();
+        brush.beginPath();
+        brush.arc(startX, startY, 1, 0, 2*Math.PI);
+        brush.stroke();
         canvas.style.cursor = "default";
     } else {
         isDrawing = true;
         startX = mouseX;
         startY = mouseY;
+        brush.arc(startX, startY, 1, 0, 2*Math.PI);
+        brush.stroke();
         canvas.style.cursor = "crosshair";
     }
 }
@@ -308,6 +314,8 @@ function drawCircle() {
     $('#canvas').mousedown(function (e) {
         dynamicCircle(e);
     });
+
+    brush.strokeWidth = 5;
 
     canvas.removeEventListener ("mouseout", function() {
         canvas.removeEventListener('mousemove', onPaint, false)
